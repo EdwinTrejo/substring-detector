@@ -1,6 +1,6 @@
 {
   "name": "substring-detector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "displayName": "Substring Detector",
   "description": "An extension that detects specified substrings in the selected word. (Helps decipher acronyms)",
   "publisher": "STExtensions",
@@ -54,8 +54,12 @@
           },
           "default": [
             {
-              "substring": "substring",
-              "replacement": "replaced"
+              "substring": "HTTPS",
+              "replacement": "Hypertext Transfer Protocol Secure"
+            },
+            {
+              "substring": "SSL",
+              "replacement": "Secure Sockets Layer"
             }
           ]
         }
