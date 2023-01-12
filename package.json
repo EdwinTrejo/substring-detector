@@ -1,0 +1,87 @@
+{
+  "name": "substring-detector",
+  "version": "0.0.1",
+  "displayName": "Substring Detector",
+  "description": "An extension that detects specified substrings in the selected word. (Helps decipher acronyms)",
+  "publisher": "STE",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:substringDetector.detect"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "substringDetector.detect",
+        "title": "Detect Substrings"
+      }
+    ],
+    "statusBar": {
+      "items": [
+        {
+          "command": "substringDetector.detect",
+          "text": "Detect Substrings",
+          "tooltip": "Click to detect the presence of a specified substring in the selected text",
+          "color": "white",
+          "alignment": "left"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "substring-detector.substringReplacements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "substring": {
+                "type": "string"
+              },
+              "replacement": {
+                "type": "string"
+              }
+            }
+          },
+          "default": [
+            {
+              "substring": "substring",
+              "replacement": "replaced"
+            }
+          ]
+        },
+        "substring-detector.showStatusBarButton": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3",
+    "@vscode/test-electron": "^2.2.0"
+  }
+}
