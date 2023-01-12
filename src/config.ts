@@ -10,9 +10,4 @@ export class Config {
         let config = vscode.workspace.getConfiguration('substring-detector');
         return config.get('substringReplacements') as SubstringReplacement[];
     }
-
-    public static get ShowStatusBarButton(): boolean {
-        let config = vscode.workspace.getConfiguration('substring-detector');
-        return config.get('showStatusBarButton') as boolean;
-    }
 }

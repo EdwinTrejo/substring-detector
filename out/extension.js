@@ -11,12 +11,7 @@ function activate(context) {
     substringDetectorStatusBarItem.text = "Detect Substrings";
     substringDetectorStatusBarItem.tooltip = "Click to detect the presence of a specified substring in the selected text";
     substringDetectorStatusBarItem.color = "white";
-    if (config_1.Config.ShowStatusBarButton === true) {
-        substringDetectorStatusBarItem.show();
-    }
-    else {
-        substringDetectorStatusBarItem.hide();
-    }
+    substringDetectorStatusBarItem.show();
     let disposable = vscode.commands.registerCommand('substringDetector.detect', () => {
         let editor = vscode.window.activeTextEditor;
         if (!editor) {
@@ -30,16 +25,17 @@ function activate(context) {
         }
         let substringReplacements = config_1.Config.SubstringReplacements;
         let found = false;
-        let reportstring = `Expanded Substrings\n`;
+        let space = ' || ';
+        let reportstring = `Expanded Substrings:`;
         for (let i = 0; i < substringReplacements.length; i++) {
             let { substring, replacement } = substringReplacements[i];
             if (selectedText.includes(substring)) {
-                reportstring += `"${substring}": "${replacement}"\n`;
+                reportstring += `${space} "${substring}":    ${replacement}`;
                 found = true;
             }
         }
         if (found) {
-            vscode.window.showInformationMessage(reportstring);
+            vscode.window.showInformationMessage(reportstring, "Ok");
         }
         if (!found) {
             vscode.window.showInformationMessage(`The selected text does not contain any of the specified substrings.`);

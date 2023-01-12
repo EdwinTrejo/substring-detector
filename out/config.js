@@ -7,10 +7,6 @@ class Config {
         let config = vscode.workspace.getConfiguration('substring-detector');
         return config.get('substringReplacements');
     }
-    static get ShowStatusBarButton() {
-        let config = vscode.workspace.getConfiguration('substring-detector');
-        return config.get('showStatusBarButton');
-    }
 }
 exports.Config = Config;
 //# sourceMappingURL=config.js.map
